@@ -23,6 +23,7 @@ import org.springframework.beans.factory.annotation.Value;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
+//Classe Employe
 @Entity
 public class Employe implements Serializable {
 	
