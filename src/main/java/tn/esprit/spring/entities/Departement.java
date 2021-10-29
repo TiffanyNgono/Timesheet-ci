@@ -23,7 +23,7 @@ public class Departement implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private long id;
 	
 	private String name;
 	
@@ -46,7 +46,12 @@ public class Departement implements Serializable {
 		this.name = name;
 	}
 	
-	public int getId() {
+	@Override
+	public String toString() {
+		return "Departement [id=" + id + ", name=" + name + ", entreprise=" + entreprise + "]";
+	}
+
+	public long getId() {
 		return id;
 	}
 
