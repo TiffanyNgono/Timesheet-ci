@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     parameters {
-        choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0' , '1.4.0' , '1.5.0'], description: '')
+        choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0' , '1.4.0' , '1.5.0' , '1.0.1-SNAPSHOT'], description: '')
         booleanParam(name: 'executeTests', defaultValue: true, description: '')
     }
 
@@ -20,7 +20,7 @@ pipeline {
             steps {
                 echo "We'll do a build here";
                 bat "mvn -version"
-                bat "mvn versions:set -DnewVersion=1.2.1-SNAPSHOT"
+                bat "mvn versions:set -DnewVersion=${VERSION}"
                 bat "mvn clean package"
             }
         }
@@ -41,8 +41,8 @@ pipeline {
         stage ('deploy') {
             steps {
                 echo "Deployment";
-                bat "mvn versions:set -DnewVersion=1.2.1-SNAPSHOT"
-                bat "mvn deploy:deploy-file -DgroupId=tn.esprit -DartifactId=timesheet-ci -Dversion=1.2.1-SNAPSHOT -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-snapshots/ -Dfile=target/timesheet-ci-1.2.1-SNAPSHOT.jar"
+                bat "mvn versions:set -DnewVersion=${VERSION}"
+                bat "mvn deploy:deploy-file -DgroupId=tn.esprit -DartifactId=timesheet-ci -Dversion=${VERSION} -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-snapshots/ -Dfile=target/timesheet-ci-${VERSION}.jar"
             }
         }
        
