@@ -6,6 +6,7 @@ package tn.esprit.spring.service;
 import java.text.ParseException;
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,28 +27,40 @@ public class EmployeServiceImplTest {
 		@Test
 		public void testAddEmploye() throws ParseException {
 			Employe emp = new Employe("Koeke", "Maurel", "dodo@gmail.com", true, Role.ADMINISTRATEUR);
-			Employe e = es.addEmploye(emp);
-			System.out.println(e.toString());
+			Employe empA = es.addEmploye(emp);
+			Assert.assertEquals(emp.getPrenom() , empA.getPrenom());
 		}
 		
 		@Test
+		public void testModifyEmploye() throws ParseException{
+			Employe emp = new Employe(5L , "Koeke Dodo", "Maurel", "dodo@gmail.com", null, true, Role.INGENIEUR);
+			Employe empM = es.updateEmploye(emp);
+			Assert.assertEquals(emp.getPrenom() , empM.getPrenom());
+		}
+		@Test
 		public void testRetrieveEmploye() throws ParseException {
 			List <Employe> employes =  es.retrieveAllEmploye();
-			System.out.println(employes.size());
+			Assert.assertEquals(68, employes.size());
 		}
 		
-//		@Test
-//		public void testEmploye() throws ParseException{
-//			Employe e = es.retrieveEmploye("2");
-//			System.out.println("Employe : " + e.toString());
-//		}
-//		
-//		@Test
-//		public void testDeleteEmploye() throws ParseException{
-//			
-//			es.deleteEmploye("3");
-//			System.out.println((es.retrieveEmploye("3") != null ) ? "Parfati" : "not good");
-//		}
+		@Test
+		public void testEmploye() throws ParseException{
+			Employe e = es.retrieveEmploye("15");
+			Assert.assertEquals(1L, e.getId());
+		}
+		
+		@Test
+		public void testDeleteEmploye() throws ParseException{
+			es.deleteEmploye("20");
+			Assert.assertNull(es.retrieveEmploye("20"));
+		}
+		
+		@Test
+		public void testRetrieveEmployeByRole() throws ParseException {
+			List <Employe> employes =  es.retrieveAllEmploye();
+			Assert.assertEquals(68, employes.size());
+		}
+		
  
 }
 
