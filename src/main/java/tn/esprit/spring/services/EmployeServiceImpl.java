@@ -35,16 +35,13 @@ public class EmployeServiceImpl implements IEmployeService {
 
 	@Override
 	public void deleteEmploye(String id) {
-		System.out.println("OK");
 		empRepository.deleteById(Long.parseLong(id));
-		System.out.println("OK");
 	}
 
 
 	@Override
 	public Employe updateEmploye(Employe emp) {
-		Employe e = (empRepository.findId(emp.getId()) != null) ? empRepository.save(emp) : null;
-		return e;
+		return (empRepository.findId(emp.getId()) != null) ? empRepository.save(emp) : null;
 	}
 
 	
@@ -56,8 +53,7 @@ public class EmployeServiceImpl implements IEmployeService {
 
 	@Override
 	public List<Employe> retrieveEmployes(String role) {
-		// TODO Auto-generated method stub
-		return null;
+		return empRepository.findRole(role);
 	}
 
 }

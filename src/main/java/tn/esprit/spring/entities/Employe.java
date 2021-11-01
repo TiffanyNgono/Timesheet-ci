@@ -3,22 +3,15 @@ package tn.esprit.spring.entities;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
-import javax.validation.constraints.Pattern;
-
-import org.springframework.beans.factory.annotation.Value;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -69,18 +62,6 @@ public class Employe implements Serializable {
 		super();
 	}
 	
-		
-	public Employe(long id, String prenom, String nom, String email, String password, boolean actif, Role role , Contrat contrat) {
-		super();
-		this.id = id;
-		this.prenom = prenom;
-		this.nom = nom;
-		this.email = email;
-		this.password = password;
-		this.actif = actif;
-		this.role = role;
-		this.contrat =contrat;
-	}
 
 
 	public Employe(String prenom, String nom, String email, String password, boolean actif, Role role , Contrat contrat) {
@@ -94,7 +75,8 @@ public class Employe implements Serializable {
 		this.contrat =contrat;
 	}
 
-	public Employe(String nom, String prenom, String email, String password, boolean actif, Role role) {
+	public Employe(long id , String nom, String prenom, String email, String password, boolean actif, Role role) {
+		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;

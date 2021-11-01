@@ -43,12 +43,12 @@ public class DepartementServiceImplTest {
 			Departement d = ds.retrieveDepartement("2");
 			System.out.println("Departement : "+d.toString());
 		}
-		
-		@Test
-		public void testDeleteDepartement() {
-			ds.deleteDepartement("5");
-			
-		}
+//		
+//		@Test
+//		public void testDeleteDepartement() {
+//			ds.deleteDepartement("5");
+//			
+//		}
 		
 		// 5 tests unitaires  
  
