@@ -2,11 +2,6 @@ pipeline {
 
     agent any
 
-    parameters {
-        choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0' , '1.4.0' , '1.5.0' , '1.0.1-SNAPSHOT'], description: '')
-        booleanParam(name: 'executeTests', defaultValue: true, description: '')
-    }
-
 
     stages {
 
@@ -16,7 +11,7 @@ pipeline {
             }
         }
         
-        stage ('building') {
+        stage ('build') {
             steps {
                 echo "We'll do a build here";
                 bat "mvn -version"
@@ -36,13 +31,6 @@ pipeline {
             steps {
                 echo "Here its for sonar";
                 bat "mvn sonar:sonar"
-            }
-        }
-        stage ('deploy') {
-            steps {
-                echo "Deployment";
-                bat "mvn versions:set -DnewVersion=${VERSION}"
-                bat "mvn deploy:deploy-file -DgroupId=tn.esprit -DartifactId=timesheet-ci -Dversion=${VERSION} -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-snapshots/ -Dfile=target/timesheet-ci-${VERSION}.jar"
             }
         }
        
