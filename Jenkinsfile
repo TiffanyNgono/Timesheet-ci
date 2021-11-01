@@ -41,7 +41,7 @@ pipeline {
         stage ('deploy') {
             steps {
                 echo "Deployment";
-                bat "mvn deploy:deploy-file -DgroupId=tn.esprit -DartifactId=timesheet-ci -Dversion=1.0 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/#browse/browse:maven-releases/ -Dfile=target/timesheet-ci-${VERSION}.jar"
+                bat "mvn deploy:deploy-file -DgroupId=tn.esprit -DartifactId=timesheet-ci -Dversion=${VERSION} -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/#browse/browse:maven-releases/ -Dfile=target/timesheet-ci-${VERSION}.jar"
             }
         }
        
