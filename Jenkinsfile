@@ -15,7 +15,6 @@ pipeline {
             steps {
                 echo "We'll do a build here";
                 bat "mvn -version"
-                bat "mvn package"
             }
         }
 
