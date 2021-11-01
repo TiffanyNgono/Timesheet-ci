@@ -44,11 +44,11 @@ public class DepartementServiceImplTest {
 			System.out.println("Departement : "+d.toString());
 		}
 		
-		@Test
+		/*@Test
 		public void testDeleteDepartement() {
 			ds.deleteDepartement("5");
 			
-		}
+		}*/
 		
 		// 5 tests unitaires  
  
