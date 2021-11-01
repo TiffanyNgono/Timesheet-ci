@@ -20,7 +20,7 @@ pipeline {
             steps {
                 echo "We'll do a build here";
                 bat "mvn -version"
-                bat "mvn versions:set -DnewVersion=${VERSION}"
+                bat "mvn versions:set -DnewVersion=1.2.1-SNAPSHOT"
                 bat "mvn clean package"
             }
         }
@@ -41,7 +41,8 @@ pipeline {
         stage ('deploy') {
             steps {
                 echo "Deployment";
-                bat "mvn deploy:deploy-file -DgroupId=tn.esprit -DartifactId=timesheet-ci -Dversion=${VERSION} -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/#browse/browse:maven-releases/ -Dfile=target/timesheet-ci-${VERSION}.jar"
+                bat "mvn versions:set -DnewVersion=1.2.1-SNAPSHOT"
+                bat "mvn deploy:deploy-file -DgroupId=tn.esprit -DartifactId=timesheet-ci -Dversion=1.2.1-SNAPSHOT -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-snapshots/ -Dfile=target/timesheet-ci-1.2.1-SNAPSHOT.jar"
             }
         }
        
