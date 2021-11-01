@@ -3,10 +3,12 @@ CODE_CHANGES = getGitChanges()
 pipeline {
 
     agent any
-    environment {
-        NEW_VERSION == 'V1.0.1'
-        SERVER_CREDENTIALS = credentials('Timesheet-cre')
+
+    parameters {
+        choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: '')
+        booleanParam(name: 'executeTests', defaultValue: true, description: '')
     }
+
 
     stages {
 
@@ -29,7 +31,7 @@ pipeline {
             }
             steps {
                 echo "We'll do a build here";
-                echo "Building version ${NEW_VERSION}"
+                echo "Building version ${VERSION}"
             }
         }
 
@@ -47,7 +49,6 @@ pipeline {
         stage ('deploy') {
             steps {
                 echo "Deployment";
-                echo "Deployment with ${SERVER_CREDENTIALS}"
             }
         }
        
