@@ -4,7 +4,7 @@ pipeline {
 
     agent any
     environment {
-        NEW_VERSION == '1.0.1'
+        NEW_VERSION == 'V1.0.1'
         SERVER_CREDENTIALS = credentials('Timesheet-cre')
     }
 
