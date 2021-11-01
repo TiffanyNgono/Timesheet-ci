@@ -16,7 +16,7 @@ pipeline {
             }
         }
         
-        stage ('build') {
+        stage ('building') {
             steps {
                 echo "We'll do a build here";
                 bat "mvn -version"
