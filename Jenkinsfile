@@ -11,11 +11,6 @@ pipeline {
     stages {
 
        stage ('git') {
-           when{
-                expression{
-                    BRANCH_NAME == 'master' && CODE_CHANGES == true
-                }
-            }
             steps {
                echo "Getting Project from Git"; 
             }
