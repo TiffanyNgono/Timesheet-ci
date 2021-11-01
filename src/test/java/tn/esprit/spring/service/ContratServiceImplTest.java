@@ -41,11 +41,11 @@ public class ContratServiceImplTest {
 		log.info("retrieveContrat : " + c);
 	}
 //	
-	/*@Test
+	@Test
 	public void testDeleteContrat() {
-		ct.deleteContrat(5);
-		Assert.assertNull(ct.retrieveContrat(5));		
-	}*/
+		ct.deleteContrat(1);
+		Assert.assertNull(ct.retrieveContrat(1));		
+	}
 	
 	@Test
 	public void testRetrieveAllUser() {
