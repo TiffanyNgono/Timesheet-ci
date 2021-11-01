@@ -15,24 +15,37 @@ pipeline {
             steps {
                 echo "We'll do a build here";
                 bat "mvn -version"
-                bat "mvn versions:set -DnewVersion=1.0"
-                bat "mvn clean package"
+                bat "mvn clean package -DskipTests"
             }
         }
 
         stage ('test') {
             steps {
                 echo "This place is for test";
-                bat "mvn test";
+                //bat "mvn test -DskipTests";
             }
         }
 
         stage ('sonar') {
             steps {
                 echo "Here its for sonar";
-                bat "mvn sonar:sonar"
+                bat "mvn sonar:sonar -DskipTests"
             }
         }
        
     }
+    // post{
+    //     always{
+    //         //Fait le traitement ci dessous quand tout a bien exécuté
+    //     }
+
+    //     success{
+
+    //     }
+
+    //     failure{
+
+    //     }
+    // }
+    
 }
