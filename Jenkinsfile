@@ -27,6 +27,11 @@ pipeline {
            bat "mvn deploy -Dmaven.test.skip"
          }
        }
-    
+       stage("Mail") {
+        steps {
+          echo "Sending mail"; 
+          emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+         }
+       }
    }   
 }
