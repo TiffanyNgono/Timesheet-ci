@@ -19,7 +19,8 @@ pipeline {
         stage ('build') {
             steps {
                 echo "We'll do a build here";
-                echo "Building version ${VERSION}"
+                bat "mvn -version"
+                bat "mvn clean package"
             }
         }
 
