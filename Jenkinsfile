@@ -36,7 +36,7 @@ pipeline {
     }
     // post{
     //     always{
-    //         //Fait le traitement ci dessous quand tout a bien exécuté
+    //         //Faait le traitement ci dessous quand tout a bien exécuté
     //     }
 
     //     success{
