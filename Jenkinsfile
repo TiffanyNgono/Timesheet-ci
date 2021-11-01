@@ -27,17 +27,20 @@ pipeline {
         stage ('test') {
             steps {
                 echo "This place is for test";
+                bat "mvn test";
             }
         }
 
         stage ('sonar') {
             steps {
                 echo "Here its for sonar";
+                bat "mvn sonar:sonar"
             }
         }
         stage ('deploy') {
             steps {
                 echo "Deployment";
+                bat "mvn deploy"
             }
         }
        
