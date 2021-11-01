@@ -21,7 +21,7 @@ pipeline {
         stage ('test') {
             steps {
                 echo "This place is for test";
-                bat "mvn test";
+                bat "mvn test -DskipTests";
             }
         }
 
