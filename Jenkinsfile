@@ -15,7 +15,7 @@ pipeline {
             steps {
                 echo "We'll do a build here";
                 bat "mvn -version"
-                bat "mvn versions:set -DnewVersion=${VERSION}"
+                bat "mvn versions:set -DnewVersion=1.0"
                 bat "mvn clean package"
             }
         }
